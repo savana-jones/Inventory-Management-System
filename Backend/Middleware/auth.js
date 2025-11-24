@@ -4,7 +4,7 @@ module.exports = function (req, res, next) {
   const authHeader = req.header("Authorization");
   if (!authHeader) return res.status(401).json({ message: "Access denied" });
 
-  const token = authHeader.split(" ")[1];
+  const token = authHeader.split(" ")[1]; // remove "Bearer"
   if (!token) return res.status(401).json({ message: "Access denied" });
 
   try {
@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
     req.user = verified;
     next();
   } catch (err) {
-    console.log(err);  // <-- add this to see error
+    console.log(err);  // check invalid signature or other issues
     res.status(400).json({ message: "Invalid token" });
   }
 };

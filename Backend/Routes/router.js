@@ -22,7 +22,7 @@ router.post("/insertproduct", async (req, res) => {
 })
 
 //Getting Data:
-router.get('/products', auth, async (req, res) => {
+router.get('/products',  async (req, res) => {
     try {
         const getProducts = await products.find({})
         res.status(201).json(getProducts);
@@ -32,7 +32,7 @@ router.get('/products', auth, async (req, res) => {
 })
 
 //Getting individual Data:
-router.get('/products/:id', auth, async (req, res) => {
+router.get('/products/:id', async (req, res) => {
     try {
         const getProduct = await products.findById(req.params.id);
         res.status(201).json(getProduct);
@@ -42,7 +42,7 @@ router.get('/products/:id', auth, async (req, res) => {
 })
 
 //Editing Data:
-router.put('/updateproduct/:id', auth, async (req, res) => {
+router.put('/updateproduct/:id',  async (req, res) => {
     const { ProductName, ProductPrice, ProductBarcode } = req.body;
     try {
         const updateProducts = await products.findByIdAndUpdate(
@@ -57,7 +57,7 @@ router.put('/updateproduct/:id', auth, async (req, res) => {
 })
 
 //Deleting Data:
-router.delete('/deleteproduct/:id', auth, async (req, res) => {
+router.delete('/deleteproduct/:id',  async (req, res) => {
     try {
         const deleteProduct = await products.findByIdAndDelete(req.params.id);
         res.status(201).json(deleteProduct);
