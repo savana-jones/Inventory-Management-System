@@ -65,8 +65,8 @@ export default function Products() {
                 </div>
                 <div className="overflow-auto mt-3" style={{ maxHeight: "38rem" }}>
                     <table className="table table-striped table-hover mt-3 fs-5">
-                        <thead>
-                            <tr className="tr_color">
+                        <thead style={{ backgroundColor: "#6c63ff", color: "white" }}>
+                            <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Product Price</th>

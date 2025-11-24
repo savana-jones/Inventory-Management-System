@@ -8,7 +8,7 @@ const app = express();
 const port = 3001;
 
 const router = require('./Routes/router');
-const authRoutes = require("./routes/auth");
+const authRoutes = require("./Routes/auth");
 
 // Middlewares first
 app.use(cors());

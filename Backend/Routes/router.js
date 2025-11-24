@@ -22,7 +22,7 @@ router.post("/insertproduct", async (req, res) => {
 })
 
 //Getting Data:
-router.get('/products', async (req, res) => {
+router.get('/products', auth, async (req, res) => {
     try {
         const getProducts = await products.find({})
         res.status(201).json(getProducts);
@@ -32,7 +32,7 @@ router.get('/products', async (req, res) => {
 })
 
 //Getting individual Data:
-router.get('/products/:id',  async (req, res) => {
+router.get('/products/:id', auth, async (req, res) => {
     try {
         const getProduct = await products.findById(req.params.id);
         res.status(201).json(getProduct);
