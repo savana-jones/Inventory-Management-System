@@ -35,13 +35,17 @@ export default function InsertProduct() {
 
         try {
             const res = await fetch("http://localhost:3001/insertproduct", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ "ProductName": productName, "ProductPrice": productPrice, "ProductBarcode": productBarcode })
-            });
-
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({
+                ProductName: productName,
+                ProductPrice: productPrice,
+                ProductBarcode: productBarcode
+            })
+        });
             await res.json();
 
             if (res.status === 201) {

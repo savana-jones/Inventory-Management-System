@@ -6,7 +6,7 @@ export default function Products() {
     useEffect(() => {
         getProducts();
     }, [])
-
+    
     const [productData, setProductData] = useState([]);
 
     const getProducts = async (e) => {
@@ -15,7 +15,8 @@ export default function Products() {
             const res = await fetch("http://localhost:3001/products", {
                 method: "GET",
                 headers: {
-                    "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }
             });
 
@@ -38,7 +39,8 @@ export default function Products() {
         const response = await fetch(`http://localhost:3001/deleteproduct/${id}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
         });
 

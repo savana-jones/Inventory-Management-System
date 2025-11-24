@@ -28,10 +28,11 @@ export default function InsertProduct() {
         const getProduct = async () => {
           try {
             const res = await fetch(`http://localhost:3001/products/${id}`, {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json"
-              }
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-auth-token": `Bearer ${localStorage.getItem("token")}`
+            }
             });
       
             const data = await res.json();
@@ -65,11 +66,16 @@ export default function InsertProduct() {
 
         try {
             const response = await fetch(`http://localhost:3001/updateproduct/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ "ProductName": productName, "ProductPrice": productPrice, "ProductBarcode": productBarcode })
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "x-auth-token": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({
+                "ProductName": productName,
+                "ProductPrice": productPrice,
+                "ProductBarcode": productBarcode
+            })
             });
 
             await response.json();
